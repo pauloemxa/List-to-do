@@ -4,11 +4,11 @@
 
 	Os arquivos deveram ser postos em um servidor web.
 	para executar o programa a maquina deverá conter php7 e mysql.
-	um banco de dados deverá ser criado para a mesma, sendo este o do arquivo Banco.txt.
+	um banco de dados deverá ser criado para a mesma, sendo este o do arquivo Banco-teknisa.sql
 
 *	construir:
 
-	Execute a query de banco passada no arquivo Banco.txt
+	Execute a query de banco passada no arquivo Banco-teknisa.sql no seu banco mysql.
 
 *	executar:
 
