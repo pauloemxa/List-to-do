@@ -1,7 +1,8 @@
 <?php
-	include 'db_connection.php';
+	include 'Db.php';
+	$obj_db = new Db();
 
-	delete($db_connection);
+	$obj_db->deletemarcados();
 
 	header('Location: index.php');
 ?>

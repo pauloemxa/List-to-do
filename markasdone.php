@@ -1,16 +1,20 @@
 <?php
-	include 'db_connection.php';
+	include 'Db.php';
+	$obj_db = new Db();
 
 	$id = $_POST['done'];
 
-	$resultado = select("SELECT done FROM tasks WHERE id = '".$id."'",$db_connection);
-	
-	$status = mysqli_fetch_row($resultado);
-	
+	foreach ($obj_db->select("SELECT done FROM tasks WHERE id = '".$id."'") as $items) {
+		if(is_null($items)){break;}
+		$status = $items[0];
+	}
+
 	if($status[0]=='0'){
-		update(1,$id,$db_connection);
+		echo 1;
+		$obj_db->updatestatus(1,$id);
 	}else{
-		update(0,$id,$db_connection);
+		echo 0;
+		$obj_db->updatestatus(0,$id);
 	}
 	
 	header('Location: index.php');

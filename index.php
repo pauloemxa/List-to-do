@@ -1,16 +1,6 @@
 <?php 
-	
-	include 'db_connection.php'; 
-
-	function taskclass($done_status){
-		$resultado = $done_status ;
-		if($done_status==0){
-			$resultado = "task-notdone";
-		}else{
-			$resultado = "task-done";
-		}
-		return ($resultado);
-	}
+	include 'Db.php';
+	include 'Servicos.php';
 ?>
 
 <!DOCTYPE html>
@@ -22,17 +12,18 @@
 	</head>
 	<body>
 		<div id="main">
-			<h1>To do</h1>		
-			
+			<h1>To do</h1>			
 			<ul>
-				<?php $resultado = select("SELECT * FROM tasks",$db_connection); ?>
-				<?php while($linhas = mysqli_fetch_row($resultado)) { ?>			
-				<li>								
-					<span class=<?php echo taskclass($linhas[2])?>>
-						<form action="markasdone.php" method="POST">
-							<input type='hidden' name="done" value=<?php echo $linhas[0];?>>
-							<input type='submit' value="done!">											
-						<?php echo wordwrap($linhas[1],20,'<br />',1); ?>
+				<?php $obj_db = new Db(); ?>
+				<?php foreach($obj_db->selectdados() as $items){ ?>
+				<?php if(is_null($items)){break;} ?>
+				<li>
+					<?php $obj_servicos = new Servicos(); ?>
+					<span class=<?php $obj_servicos->taskclass($items[2])?> >
+						<form action="markasdone.php" method="POST">							
+							<input type='hidden' name="done" value=<?php echo $items[0] ?>>
+							<input type='submit' value="done!">
+							<?php echo $items[1];?>										
 						</form>
 					</span>						
 				</li>		
