@@ -11,7 +11,7 @@
 	{
 		$objServicos->deleteDataIndex();
 	}
-	elseif($_POST['done'])
+	elseif(isset($_POST['done']))
 	{
 		$objServicos->markAsDone($_POST['done']);
 	}
