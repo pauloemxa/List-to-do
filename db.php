@@ -4,8 +4,8 @@
 * Está classe fará a conexão com o banco
 * e todos os serviços no mesmo.
 */
-class Db 
-{
+class Db
+{	
 	private $hostname;
 	private $username;
 	private $password;
@@ -24,35 +24,43 @@ class Db
 	}
 
 	//Faz o select passado no banco e retorna o resultado de cada linha no array $resultado
-	function selectdados(){
+	function selectDados()
+	{
 		$select = mysqli_query($this->db_connection,"SELECT * FROM tasks");
 		$i=0;
-		while ($resultado[$i] = mysqli_fetch_row($select)) {		
+		while ($resultado[$i] = mysqli_fetch_row($select))
+		{		
 			$i++;
 		}
 		return($resultado);
     }
     //Faz qualquer select passado como parametro.
-    function select($query_string){
-		$select = mysqli_query($this->db_connection,$query_string);
+    function selectQuery($id)
+    {
+    	$query = "SELECT done FROM tasks WHERE id = '".$id."'";
+		$select = mysqli_query($this->db_connection,$query);
 		$i=0;
-		while ($resultado[$i] = mysqli_fetch_row($select)) {		
+		while ($resultado[$i] = mysqli_fetch_row($select))
+		{		
 			$i++;
 		}
 		return($resultado);
     }
     //Deleta todos os items "marcados".
-	function deletemarcados(){
+	function deleteMarcados()
+	{
 		$query = "DELETE FROM tasks WHERE done = '1'";
 		mysqli_query($this->db_connection,$query);
 	}
 	//Muda o status do item para marcado/não marcado.
-	function updatestatus($done ,$id){
+	function updateStatus($done ,$id)
+	{
 		$query = "UPDATE tasks SET done='".$done."' WHERE id='".$id."'";
 		mysqli_query($this->db_connection,$query);
 	}
 	//Insere os dados no banco
-	function insertdata($task_description){												
+	function insertData($task_description)
+	{												
 		$query = "INSERT INTO tasks(description,done) VALUES('".$task_description."','0')";
 		mysqli_query($this->db_connection,$query);
 	}
