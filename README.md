@@ -18,9 +18,8 @@
 
 * Detalhamento da estrutura e organização dos arquivos do projeto;
 
-	Sobre a estrutura dos arquivos o index.php contem o html e a página principal do programa,
-	Db.php faz a conexão com o banco de dados e todos os serviços que são relacionados ao db. A página serviços.php contém os
-	serviços nescessarios para varias funcionalidades do programa.
+	Sobre a estrutura dos arquivos o index.php contém o html e a página principal do programa,
+	Db.php faz a conexão com o banco de dados e todos os serviços que são relacionados ao db. A página serviços.php contém os serviços necessários para várias funcionalidades do programa.
 
 * [Opcional] Apresentar justificativas ou destaques para pontos específicos do projeto.
 
